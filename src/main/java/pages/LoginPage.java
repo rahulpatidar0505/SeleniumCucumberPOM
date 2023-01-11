@@ -1,47 +1,15 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginPage {
-
 	private WebDriver driver;
 
-	// 1. By Locators: OR
-//	private By emailId = By.id("email");
-//	private By password = By.id("passwd");
-//	private By signInButton = By.id("SubmitLogin");
-//	private By forgotPwdLink = By.linkText("Forgot your password?111");
-
-	// 2. Constructor of the page class:
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 	}
-
-	// 3. page actions: features(behavior) of the page the form of methods:
-
-//	public String getLoginPageTitle() {
-//		return driver.getTitle();
-//	}
-//
-//	public boolean isForgotPwdLinkExist() {
-//		return driver.findElement(forgotPwdLink).isDisplayed();
-//	}
-
-//	public void enterUserName(String username) {
-//		driver.findElement(emailId).sendKeys(username);
-//	}
-//
-//	public void enterPassword(String pwd) {
-//		driver.findElement(password).sendKeys(pwd);
-//	}
-//
-//	public void clickOnLogin() {
-//		driver.findElement(signInButton).click();
-//	}
-
 
 	@FindBy(xpath = "//div[@class='panel header']//a[contains(text(),'Sign In')]")
 	WebElement locator_signInLink;
@@ -54,6 +22,9 @@ public class LoginPage {
 
 	@FindBy(xpath = "//fieldset[@class='fieldset login']//span[contains(text(),'Sign In')]")
 	WebElement locator_signInButton;
+
+	@FindBy(css = "div[data-bind='html: $parent.prepareMessageForHtml(message.text)']")
+	WebElement locator_incorrectCaptcha;
 
 	public void clickOnSignInLink() {
 		locator_signInLink.click();
@@ -71,4 +42,18 @@ public class LoginPage {
 		locator_signInButton.click();
 	}
 
+	public void doLogin(String emailId, String passowrd) {
+		clickOnSignInLink();
+		enterUserName(emailId);
+		enterPassword(passowrd);
+		locator_signInButton.click();
+	}
+
+	public String getLoginPageTitle() {
+		return driver.getTitle();
+	}
+
+	public String verifyErrorMsg() {
+		return locator_incorrectCaptcha.getText();
+	}
 }
