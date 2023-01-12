@@ -1,13 +1,13 @@
 package stepdefinitions;
 
 import factory.DriverFactory;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.support.PageFactory;
 import pages.AccountPage;
 import pages.LoginPage;
-
 import java.util.List;
 import java.util.Map;
 
@@ -39,6 +39,36 @@ public class AccountPageSteps {
 		accountPage.selectProductName(productName);
 	}
 
+	@And("user fetch first product name")
+	public String user_fetch_first_product_name() {
+		return accountPage.getMontanaProductName();
+	}
+
+	@And("user fetch first product price")
+	public String user_fetch_first_product_price() {
+		return accountPage.getMontanaProductPrice();
+	}
+
+	@And("user fetch second product name")
+	public String user_fetch_second_product_name() {
+		return accountPage.getLandoProductName();
+	}
+
+	@And("user fetch second product price")
+	public String user_fetch_second_product_price() {
+		return accountPage.getLandoProductPrice();
+	}
+
+	@And("user fetch third product name")
+	public String user_fetch_third_product_name() {
+		return accountPage.getZeppelinProductName();
+	}
+
+	@And("user fetch third product price")
+	public String user_fetch_third_product_price() {
+		return accountPage.getZeppelinProductPrice();
+	}
+
 	@Then("user click on size {string}")
 	public void user_click_on_size(String productSize) {
 		accountPage.selectProductSize(productSize);
@@ -54,4 +84,23 @@ public class AccountPageSteps {
 		accountPage.clickOnAddToCartButton();
 	}
 
+	@Then("verify product is added into cart")
+	public void verify_product_is_added_into_cart() {
+
+	}
+
+	@Then("user navigate and hover to Men>Bottoms and click on Pants")
+	public void user_navigate_and_hover_to_men_bottoms_and_click_on_pants() {
+		accountPage.selectPant();
+	}
+
+	@Then("user click on cart link")
+	public void user_click_on_cart_link() {
+		accountPage.clickOnCart();
+	}
+
+	@Then("user click on proceed to checkout button")
+	public void user_click_on_proceed_to_checkout_button() {
+		accountPage.proceedToCheckout();
+	}
 }

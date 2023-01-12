@@ -52,9 +52,6 @@ public class AccountPage {
 	@FindBy(xpath = "//button[@id='top-cart-btn-checkout']")
 	WebElement locator_checkout;
 
-	public @FindBy(xpath = "//span[normalize-space()='My Account']")
-	WebElement locator_myAccountText;
-
 	public @FindBy(xpath = "//a[normalize-space()='My Orders']")
 	WebElement locator_myOrder;
 
@@ -144,19 +141,13 @@ public class AccountPage {
 		TestUtils.clickOn(driver, locator_addToCartButton, 2);
 	}
 
-//	public void selectSpecificProduct(String productName, String productSize, String productColor){
-//		selectProductName(productName);
-//		selectProductSize(productSize);
-//		selectProductColor(productColor);
-//	}
-//	public void goToCartAndCheckout(){
-//		TestUtils.waitForElementPresent(locator_cartLink, 5);
-//		clickOn(driver, locator_cartLink, 2);
-//		clickOn(driver, locator_checkout, 2);
-//	}
-//	public void goToMyOrders(){
-//		TestUtils.waitForElementPresent(locator_myOrder, 5);
-//		clickOn(driver, locator_myOrder, 2);
-//	}
+	public void clickOnCart(){
+		TestUtils.waitForElementPresent(locator_cartLink, 5);
+		TestUtils.clickOn(driver, locator_cartLink, 2);
+	}
+	public void proceedToCheckout(){
+		TestUtils.waitForElementPresent(locator_checkout, 5);
+		TestUtils.clickOn(driver, locator_checkout, 2);
+	}
 }
 
