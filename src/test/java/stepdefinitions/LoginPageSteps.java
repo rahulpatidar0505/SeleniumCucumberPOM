@@ -24,19 +24,19 @@ public class LoginPageSteps {
 		loginPage.clickOnSignInLink();
 	}
 
-	@And("user enters username")
-	public void user_enters_username() {
+	@And("user enter valid username")
+	public void user_enter_valid_username() {
 		loginPage.enterUserName(TestConstant.EMAILID);
 	}
 
-	@And("user enters password")
-	public void user_enters_password() {
+	@And("user enter valid password")
+	public void user_enter_valid_password() {
 		loginPage.enterPassword(TestConstant.PASSWORD);
 	}
 
 	@And("user clicks on Login button")
 	public void user_clicks_on_login_button() {
-		loginPage.clickOnLogin();
+		loginPage.clickOnLoginButton();
 	}
 
 	@Then("user gets the title of the page")
@@ -54,5 +54,15 @@ public class LoginPageSteps {
 	public void verify_the_error_message() {
 		String errorMsg = loginPage.verifyErrorMsg();
 		org.testng.Assert.assertEquals(errorMsg, "Incorrect CAPTCHA");
+	}
+
+	@And("user enter invalid username")
+	public void userEnterInvalidUsername() {
+		loginPage.enterUserName("random@gmail.com");
+	}
+
+	@And("user enter invalid password")
+	public void userEnterInvalidPassword() {
+		loginPage.enterPassword("random");
 	}
 }

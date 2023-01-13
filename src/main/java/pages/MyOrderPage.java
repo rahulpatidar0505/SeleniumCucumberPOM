@@ -2,26 +2,28 @@ package pages;
 
 import factory.DriverFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utility.BaseClass;
 import utility.TestUtils;
-
 import java.util.List;
 
 public class MyOrderPage extends BaseClass {
-	public MyOrderPage() {
+	private WebDriver driver;
+
+	public MyOrderPage(WebDriver driver) {
+		this.driver = driver;
 	}
-	public @FindBy(xpath = "//span[normalize-space()='My Orders']")
-	WebElement locator_myOrderText;
+
 	public @FindBy(xpath = "//a[normalize-space()='My Orders']")
-	WebElement locator_myOrder;
+	WebElement lc_myOrder;
 	@FindBy(xpath = "//table[@id=\"my-orders-table\"]//tr")
 	List<WebElement> orderRowList;
 
 	public void goToMyOrders(){
-		TestUtils.waitForElementPresent(locator_myOrder, 5);
-		locator_myOrder.click();
+		TestUtils.waitForElementPresent(lc_myOrder, 5);
+		lc_myOrder.click();
 	}
 
 	public String verifyOrderFromOrderTable() {

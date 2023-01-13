@@ -4,14 +4,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>CucumberPOMSeries</groupId>
-    <artifactId>CucumberPOMSeries</artifactId>
+    <groupId>SeleniumCucumberPOM</groupId>
+    <artifactId>SeleniumCucumberPOM</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
-    <name>CucumberPOMSeries</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
 
     <properties>
 
@@ -80,26 +75,28 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>4.1.2</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>4.1.2</version>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>com.github.javafaker</groupId>-->
+<!--            <artifactId>javafaker</artifactId>-->
+<!--            <version>1.0.2</version>-->
+<!--        </dependency>-->
 
     </dependencies>
 
     <build>
         <plugins>
-
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

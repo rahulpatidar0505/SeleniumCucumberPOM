@@ -11,115 +11,92 @@ import java.util.List;
 public class AccountPage {
 	private WebDriver driver;
 	String productName;
+	String productPrice;
+
 	public AccountPage(WebDriver driver) {
 		this.driver = driver;
 	}
 
 	@FindBy(xpath = "//span[normalize-space()='Men']")
-	WebElement locator_men;
+	WebElement lc_men;
 
 	@FindBy(xpath = "//a[contains(@href,'tops-men.html')]//span[contains(text(),'Tops')]")
-	WebElement locator_tops;
+	WebElement lc_tops;
 
 	@FindBy(xpath = "//a[contains(@href,'jackets-men.html')]//span[contains(text(),'Jackets')]")
-	WebElement locator_jackets;
+	WebElement lc_jackets;
 
 	@FindBy(xpath = "//a[contains(@href,'bottoms-men.html')]//span[contains(text(),'Bottoms')]")
-	WebElement locator_bottoms;
+	WebElement lc_bottoms;
 
 	@FindBy(xpath = "//a[contains(@href,'pants-men.html')]//span[contains(text(),'Pants')]")
-	WebElement locator_pants;
+	WebElement lc_pants;
 
 	@FindBy(xpath = "//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']")
-	WebElement locator_productAddedMsg;
+	WebElement lc_productAddedMsg;
 
 	@FindBy(css = ".product.name.product-item-name")
-	List<WebElement> productList;
+	List<WebElement> lc_productList;
 
 	@FindBy(xpath = "//div[@class='swatch-option text'][@role='option']")
-	List<WebElement> productSizeList;
+	List<WebElement> lc_productSizeList;
 
 	@FindBy(xpath = "//div[@class='swatch-option color']")
-	List<WebElement> productColorList;
+	List<WebElement> lc_productColorList;
 
 	@FindBy(xpath = "//span[normalize-space()='Add to Cart']")
 	public
-	WebElement locator_addToCartButton;
+	WebElement lc_addToCartButton;
 
 	@FindBy(xpath = "//a[@class='action showcart']")
-	WebElement locator_cartLink;
+	WebElement lc_cartLink;
 
 	@FindBy(xpath = "//button[@id='top-cart-btn-checkout']")
-	WebElement locator_checkout;
-
-	public @FindBy(xpath = "//a[normalize-space()='My Orders']")
-	WebElement locator_myOrder;
+	WebElement lc_checkout;
 
 	@FindBy(xpath = "//span[contains(text(),'Montana Wind Jacket')]")
-	WebElement locator_montanaProductName;
+	WebElement lc_montanaProductName;
+	@FindBy(xpath = "//h1[@class = 'page-title']//span[@itemprop=\"name\"]")
+	WebElement lc_productName;
 
-	@FindBy(xpath = "//span[@itemprop='offers']//span[@class='price-label'][normalize-space()='As low as']/following-sibling::span//span[@class='price']")
-	WebElement locator_montanaProductPrice;
-
-	@FindBy(xpath = "//span[contains(text(),'Lando Gym Jacket')]")
-	WebElement locator_landoProductName;
-
-	@FindBy(xpath = "//span[@itemprop='offers']//span[@class='price-label'][normalize-space()='As low as']/following-sibling::span//span[@class='price']")
-	WebElement locator_landoProductPrice;
-
-	@FindBy(xpath = "//span[contains(text(),'Zeppelin Yoga Pant')]")
-	WebElement locator_zeppelinProductName;
-
-	@FindBy(xpath = "//span[@class='price-label'][normalize-space()='As low as']/following-sibling::span//span[@class='price']")
-	WebElement locator_zeppelinProductPrice;
+	@FindBy(xpath = "//div[contains(@class,'product-info-price')]//span[contains(@id,'product-price')]//span[@class='price']")
+	WebElement lc_productPrice;
 
 	Actions action=new Actions(DriverFactory.getDriver());
 	public void selectJacket() {
-		action.moveToElement(locator_men).build().perform();
-		TestUtils.scrollIntoView(locator_tops, driver);
-		TestUtils.clickElementByJS(locator_jackets, driver);
+		action.moveToElement(lc_men).build().perform();
+		TestUtils.scrollIntoView(lc_tops, driver);
+		TestUtils.clickElementByJS(lc_jackets, driver);
 	}
+
 	public void selectPant() {
-		action.moveToElement(locator_men).build().perform();
-		TestUtils.scrollIntoView(locator_bottoms, driver);
-		TestUtils.clickElementByJS(locator_pants, driver);
+		action.moveToElement(lc_men).build().perform();
+		TestUtils.scrollIntoView(lc_bottoms, driver);
+		TestUtils.clickElementByJS(lc_pants, driver);
 	}
 	public void selectProductName(String productName) {
-		for (WebElement product : productList) {
+		for (WebElement product : lc_productList) {
 			if (product.getText().contains(productName)) {
 				product.click();
 				break;
 			}
 		}
 	}
-	public String getMontanaProductName() {
-		productName =  locator_montanaProductName.getText();
+	public String getProductName() {
+		productName =  lc_productName.getText();
 		return productName;
 	}
-	public String getMontanaProductPrice() {
-		TestUtils.staleElementRefExceptionSolution(locator_zeppelinProductPrice);
-		return locator_montanaProductPrice.getText();
-	}
-	public String getLandoProductName() {
-		return locator_landoProductName.getText();
-	}
-	public String getLandoProductPrice() {
-		TestUtils.staleElementRefExceptionSolution(locator_zeppelinProductPrice);
-		return locator_landoProductPrice.getText();
-	}
-	public String getZeppelinProductName() {
-		return locator_zeppelinProductName.getText();
-	}
-	public String getZeppelinProductPrice() {
- 		TestUtils.staleElementRefExceptionSolution(locator_zeppelinProductPrice);
-		return locator_zeppelinProductPrice.getText();
+
+	public String getProductPrice() {
+		productPrice =  lc_productPrice.getText();
+		return productPrice;
 	}
 	public String getProductAddedMsg() {
-		TestUtils.waitForElementPresent(locator_productAddedMsg, 5);
-		return locator_productAddedMsg.getText();
+		TestUtils.waitForElementPresent(lc_productAddedMsg, 5);
+		return lc_productAddedMsg.getText();
 	}
 	public void selectProductSize(String productSize) {
-		for (WebElement size : productSizeList) {
+		for (WebElement size : lc_productSizeList) {
 			if (size.getText().contains(productSize)) {
 				size.click();
 				break;
@@ -127,7 +104,7 @@ public class AccountPage {
 		}
 	}
 	public void selectProductColor(String productColor) {
-		for (WebElement color : productColorList) {
+		for (WebElement color : lc_productColorList) {
 			if (color.getAttribute("aria-label").contains(productColor)) {
 				color.click();
 				break;
@@ -136,16 +113,16 @@ public class AccountPage {
 	}
 
 	public void clickOnAddToCartButton() {
-		TestUtils.clickOn(driver, locator_addToCartButton, 2);
+		TestUtils.clickOn(driver, lc_addToCartButton, 2);
 	}
 
 	public void clickOnCart(){
-		TestUtils.waitForElementPresent(locator_cartLink, 5);
-		TestUtils.clickOn(driver, locator_cartLink, 2);
+		TestUtils.waitForElementPresent(lc_cartLink, 5);
+		TestUtils.clickOn(driver, lc_cartLink, 2);
 	}
 	public void proceedToCheckout(){
-		TestUtils.waitForElementPresent(locator_checkout, 5);
-		TestUtils.clickOn(driver, locator_checkout, 2);
+		TestUtils.waitForElementPresent(lc_checkout, 5);
+		TestUtils.clickOn(driver, lc_checkout, 2);
 	}
 }
 
