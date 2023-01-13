@@ -16,26 +16,18 @@ Feature: Login to magento application and place an order
     And user clicks on save address button
     Then it shows a successful message "You saved the address."
 
-
-
-#  Scenario: Select product and add into cart
+#  Scenario: Select products and add into cart
     Given user is on address page
     When user navigate and hover to Men>Top and click on Jackets
-    Then user select product "Montana Wind Jacket"
-    And user select size "M"
-    And user select color "Green"
+    Then user select product "Montana Wind Jacket" and size "M" and color "Green"
     And user click on Add to cart button
     Then verify product "Montana Wind Jacket" is added into cart
     And user navigate and hover to Men>Top and click on Jackets
-    Then user select product "Lando Gym Jacket"
-    And user select size "L"
-    And user select color "Blue"
+    Then user select product "Lando Gym Jacket" and size "L" and color "Blue"
     And user click on Add to cart button
     Then verify product "Lando Gym Jacket" is added into cart
     Then user navigate and hover to Men>Bottoms and click on Pants
-    Then user select product "Zeppelin Yoga Pant"
-    And user select size "32"
-    And user select color "Red"
+    Then user select product "Zeppelin Yoga Pant" and size "32" and color "Red"
     And user click on Add to cart button
     Then verify product "Zeppelin Yoga Pant" is added into cart
     And user click on cart link

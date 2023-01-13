@@ -11,7 +11,6 @@ import pages.AddressPage;
 import pages.LoginPage;
 import utility.TestConstant;
 import utility.TestUtils;
-
 import java.util.List;
 import java.util.Map;
 
@@ -41,19 +40,12 @@ public class AccountPageSteps {
         accountPage.selectJacket();
     }
 
-    @Then("user select product {string}")
-    public void user_select_product(String productName) {
+    @Then("user select product {string} and size {string} and color {string}")
+    public void userSelectProductAndSizeAndColor(String productName, String productSize, String productColor) {
         accountPage.selectProductName(productName);
-    }
-
-    @Then("user select size {string}")
-    public void user_select_size(String productSize) {
         accountPage.selectProductSize(productSize);
-    }
-
-    @Then("user select color {string}")
-    public void user_select_color(String productColor) {
         accountPage.selectProductColor(productColor);
+
     }
 
     @Then("user click on Add to cart button")

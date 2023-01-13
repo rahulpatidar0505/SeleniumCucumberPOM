@@ -53,7 +53,7 @@ public class LoginPageSteps {
 	@Then("verify the error message")
 	public void verify_the_error_message() {
 		String errorMsg = loginPage.verifyErrorMsg();
-		org.testng.Assert.assertEquals(errorMsg, "Incorrect CAPTCHA");
+		Assert.assertEquals(errorMsg, "Incorrect CAPTCHA");
 	}
 
 	@And("user enter invalid username")
