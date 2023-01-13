@@ -43,7 +43,7 @@ public class CheckoutPage extends BaseClass {
 	public @FindBy(xpath = "//div[@aria-expanded='false']//strong")
 	List<WebElement> locator_productDisplayList;
 	
-	public @FindBy(xpath = "//div[@class='content minicart-items' and @aria-hidden='false'] ")
+	public @FindBy(xpath = "//div[@class='content minicart-items' and @aria-hidden='false']")
 	WebElement locator_displayProductSummary;
 
 	public @FindBy(xpath = "//strong[@class='product-item-name'][contains(text(),'Montana Wind Jacket')]")
@@ -65,9 +65,11 @@ public class CheckoutPage extends BaseClass {
 	WebElement locator_zeppelinProductPrice;
 
 	public String getMontanaProductName() {
+		TestUtils.waitForElementPresent(locator_montana_product_name, 5);
 		return locator_montana_product_name.getText();
 	}
 	public String getMontanaProductPrice() {
+		TestUtils.waitForElementPresent(locator_montana_product_price, 5);
 		return locator_montana_product_price.getText();
 	}
 	public String getLandoProductName() {
@@ -83,18 +85,21 @@ public class CheckoutPage extends BaseClass {
 		return locator_zeppelinProductPrice.getText();
 	}
 	public void expandOrderSummary(){
-		TestUtils.waitForElementPresent(locator_placeOrderButton, 5);
+		TestUtils.waitForElementPresent(locator_orderSummary, 5);
 		clickOn(driver, locator_orderSummary, 2);
+		TestUtils.waitForElementPresent(locator_displayProductSummary, 20);
 	}
 	public void verifyShippingAddressIsSelected(){
+		TestUtils.waitForElementPresent(locator_selectShippingAddress, 5);
 		locator_selectShippingAddress.isSelected();
 	}
 
 	public void verifyShippingMethodIsSelected(){
+		TestUtils.waitForElementPresent(locator_selectShippingMethod, 5);
 		locator_selectShippingMethod.isSelected();
 	}
 	public void clickOnNext(){
-		TestUtils.waitForElementPresent(locator_nextButton, 10);
+		TestUtils.waitForElementPresent(locator_nextButton, 5);
 		clickOn(driver, locator_nextButton, 2);
 	}
 	public void clickOnPlaceOrder(){
@@ -105,7 +110,8 @@ public class CheckoutPage extends BaseClass {
 		String orderNumberMessage = locator_orderNumber.getText();
 		int colonIndex = orderNumberMessage.indexOf(':');
 		String orderNumber = orderNumberMessage.substring(colonIndex + 2);
-		return orderNumber.replace(".", "");
+		String finalOrderNumber = orderNumber.replace(".", "");
+		return finalOrderNumber;
 	}
 	public String getThanksMessage(){
 		TestUtils.waitForElementPresent(locator_thanksMsg, 10);

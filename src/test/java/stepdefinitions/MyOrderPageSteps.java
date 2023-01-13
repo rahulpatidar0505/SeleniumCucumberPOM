@@ -15,15 +15,16 @@ public class MyOrderPageSteps {
 
 	MyOrderPage myOrderPage = PageFactory.initElements(DriverFactory.getDriver(), MyOrderPage.class);
 	CheckoutPage checkoutPage= PageFactory.initElements(DriverFactory.getDriver(), CheckoutPage.class);
-
-	@Then("^click on my order link")
-	public void click_on_my_order_link() {
+	CheckoutPageSteps checkoutPageSteps = new CheckoutPageSteps();
+	@And("^click on My Orders")
+	public void click_on_My_Orders() {
 		myOrderPage.goToMyOrders();
 	}
 
 	@And("^verify order number is present in order table$")
-	public void verify_order_number_is_present_in_order_table() throws Throwable {
+	public void verify_order_number_is_present_in_order_table() {
 		String orderNumber = checkoutPage.fetchOrderNumber();
-		Assert.assertEquals(myOrderPage.verifySubmittedOrder(), orderNumber);
+		String orderNumberFromOrderTable = myOrderPage.verifyOrderFromOrderTable();
+		Assert.assertEquals(orderNumberFromOrderTable, orderNumber);
 	}
 }

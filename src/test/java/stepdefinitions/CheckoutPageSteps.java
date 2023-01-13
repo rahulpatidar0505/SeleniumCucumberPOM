@@ -8,13 +8,16 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import pages.AccountPage;
 import pages.CheckoutPage;
 import pages.LoginPage;
+import utility.TestConstant;
 import utility.TestUtils;
 
 public class CheckoutPageSteps {
 
 	CheckoutPage checkoutPage= PageFactory.initElements(DriverFactory.getDriver(), CheckoutPage.class);
+	AccountPage accountPage = PageFactory.initElements(DriverFactory.getDriver(), AccountPage.class);
 	AccountPageSteps accountPageSteps =  new AccountPageSteps();
 	@Given("^user is on checkout page$")
 	public void user_is_on_checkout_page() {
@@ -25,24 +28,22 @@ public class CheckoutPageSteps {
 	public void user_expand_order_summary() {
 		if (checkoutPage.locator_productDisplayList.size() > 0) {
 			checkoutPage.expandOrderSummary();
-			TestUtils.waitForElementPresent(checkoutPage.locator_displayProductSummary, 5);
 			Assert.assertTrue(checkoutPage.locator_displayProductSummary.isDisplayed());
 		} else {
-			TestUtils.waitForElementPresent(checkoutPage.locator_displayProductSummary, 5);
 			Assert.assertTrue(checkoutPage.locator_displayProductSummary.isDisplayed());
 		}
 	}
 
 	@Then("^verify selected product on the order summary$")
 	public void verify_selected_product_on_the_order_summary() {
-		Assert.assertEquals(accountPageSteps.user_fetch_first_product_name(), checkoutPage.getMontanaProductName());
-		Assert.assertEquals(accountPageSteps.user_fetch_first_product_price(), checkoutPage.getMontanaProductPrice());
+		Assert.assertEquals(TestConstant.montana_jacket_details[0], checkoutPage.getMontanaProductName());
+		Assert.assertEquals(TestConstant.montana_jacket_details[3], checkoutPage.getMontanaProductPrice());
 
-		Assert.assertEquals(accountPageSteps.user_fetch_second_product_name(), checkoutPage.getLandoProductName());
-		Assert.assertEquals(accountPageSteps.user_fetch_second_product_price(), checkoutPage.getLandoProductPrice());
+		Assert.assertEquals(TestConstant.lando_jacket_details[0], checkoutPage.getLandoProductName());
+		Assert.assertEquals(TestConstant.lando_jacket_details[3], checkoutPage.getLandoProductPrice());
 
-		Assert.assertEquals(accountPageSteps.user_fetch_third_product_name(), checkoutPage.getZeppelinProductName());
-		Assert.assertEquals(accountPageSteps.user_fetch_third_product_price(), checkoutPage.getZeppelinProductPrice());
+		Assert.assertEquals(TestConstant.zeppelin_pant_details[0], checkoutPage.getZeppelinProductName());
+		Assert.assertEquals(TestConstant.zeppelin_pant_details[3], checkoutPage.getZeppelinProductPrice());
 	}
 
 	@And("^user verify shipping address is selected$")
@@ -65,10 +66,11 @@ public class CheckoutPageSteps {
 		checkoutPage.clickOnPlaceOrder();
 	}
 
+	String orderNumber;
 	@Then("^verify order is placed with thanks message and fetch order number$")
 	public void verify_order_is_placed_with_thanks_message_and_fetch_order_number() {
 		String thanksMessage = checkoutPage.getThanksMessage();
-		String orderNumber = checkoutPage.fetchOrderNumber();
+		orderNumber = checkoutPage.fetchOrderNumber();
 		Assert.assertTrue(thanksMessage.contains("Thank you for your purchase"));
 		Assert.assertFalse(orderNumber.isEmpty());
 	}

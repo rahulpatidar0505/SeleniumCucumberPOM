@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AccountPage {
 	private WebDriver driver;
-
+	String productName;
 	public AccountPage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -93,32 +93,30 @@ public class AccountPage {
 		}
 	}
 	public String getMontanaProductName() {
-		String productNameText = locator_montanaProductName.getText();
-		return productNameText;
+		productName =  locator_montanaProductName.getText();
+		return productName;
 	}
 	public String getMontanaProductPrice() {
-		String productPriceText = locator_montanaProductPrice.getText();
-		return productPriceText;
+		TestUtils.staleElementRefExceptionSolution(locator_zeppelinProductPrice);
+		return locator_montanaProductPrice.getText();
 	}
 	public String getLandoProductName() {
-		String productNameText = locator_landoProductName.getText();
-		return productNameText;
+		return locator_landoProductName.getText();
 	}
 	public String getLandoProductPrice() {
-		String productPriceText = locator_landoProductPrice.getText();
-		return productPriceText;
+		TestUtils.staleElementRefExceptionSolution(locator_zeppelinProductPrice);
+		return locator_landoProductPrice.getText();
 	}
 	public String getZeppelinProductName() {
-		String productNameText = locator_zeppelinProductName.getText();
-		return productNameText;
+		return locator_zeppelinProductName.getText();
 	}
 	public String getZeppelinProductPrice() {
-		String productPriceText = locator_zeppelinProductPrice.getText();
-		return productPriceText;
+ 		TestUtils.staleElementRefExceptionSolution(locator_zeppelinProductPrice);
+		return locator_zeppelinProductPrice.getText();
 	}
 	public String getProductAddedMsg() {
-		String successMsg = locator_productAddedMsg.getText();
-		return successMsg;
+		TestUtils.waitForElementPresent(locator_productAddedMsg, 5);
+		return locator_productAddedMsg.getText();
 	}
 	public void selectProductSize(String productSize) {
 		for (WebElement size : productSizeList) {

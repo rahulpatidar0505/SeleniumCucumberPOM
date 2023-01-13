@@ -1,5 +1,6 @@
 package pages;
 
+import factory.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,19 +21,19 @@ public class MyOrderPage extends BaseClass {
 
 	public void goToMyOrders(){
 		TestUtils.waitForElementPresent(locator_myOrder, 5);
-		clickOn(driver, locator_myOrder, 2);
+		locator_myOrder.click();
 	}
 
-	public String verifySubmittedOrder() {
+	public String verifyOrderFromOrderTable() {
 		String beforeXpath="//table[@id=\"my-orders-table\"]//tr[";
 		String afterXpath="]/td[1]";
-		String text=null;
+		String orderNumberFromOrderTable = null;
 		for (int i = 1; i <=orderRowList.size(); i++)
 		{
 			String finalXpath=beforeXpath+i+afterXpath;
-			text=driver.findElement(By.xpath(finalXpath)).getText();
+			orderNumberFromOrderTable= DriverFactory.getDriver().findElement(By.xpath(finalXpath)).getText();
 			break;
 		}
-		return text;
+		return orderNumberFromOrderTable;
 	}
 }

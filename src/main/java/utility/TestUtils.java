@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestUtils extends BaseClass {
 	public static long PAGE_LOAD_TIMEOUT = 30;
-	public static long IMPLICIT_WAIT = 10;
+	public static long IMPLICIT_WAIT_TIMEOUT = 10;
 	public static String emailId = "test0505@gmail.com";
 	public static String password = "Test@0505";
 	public static void selectByVisibleText(WebElement element, int timeout, String visibleText) {
@@ -34,6 +34,17 @@ public class TestUtils extends BaseClass {
 			}
 		}
 		return element;
+	}
+	public static void staleElementRefExceptionSolution(WebElement element) {
+
+		for (int i = 0; i <= 3; i++) {
+			try {
+				element.click();
+				break;
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
 	}
 	public static void clickElementByJS(WebElement element, WebDriver driver){
 		JavascriptExecutor js = ((JavascriptExecutor) driver);
