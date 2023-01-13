@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import utility.TestConstant;
 import utility.TestUtils;
 import java.time.Duration;
 
@@ -36,8 +37,8 @@ public class DriverFactory {
 
 		getDriver().manage().deleteAllCookies();
 		getDriver().manage().window().maximize();
-		getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(TestUtils.PAGE_LOAD_TIMEOUT));
-		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(TestUtils.IMPLICIT_WAIT_TIMEOUT));
+		getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(TestConstant.PAGE_LOAD_TIMEOUT));
+		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(TestConstant.IMPLICIT_WAIT_TIMEOUT));
 		return getDriver();
 	}
 

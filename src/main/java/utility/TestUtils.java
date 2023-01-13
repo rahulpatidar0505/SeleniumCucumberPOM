@@ -10,10 +10,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestUtils extends BaseClass {
-	public static long PAGE_LOAD_TIMEOUT = 30;
-	public static long IMPLICIT_WAIT_TIMEOUT = 10;
-	public static String emailId = "test0505@gmail.com";
-	public static String password = "Test@0505";
+
 	public static void selectByVisibleText(WebElement element, int timeout, String visibleText) {
 		waitForElementPresent(element, timeout);
 		Select sel = new Select(element);

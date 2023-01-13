@@ -8,6 +8,7 @@ import factory.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import utility.TestConstant;
 
 public class LoginPageSteps {
 
@@ -15,8 +16,7 @@ public class LoginPageSteps {
 	LoginPage loginPage = PageFactory.initElements(DriverFactory.getDriver(), LoginPage.class);
 	@Given("user is on home page")
 	public void user_is_on_home_page() {
-		DriverFactory.getDriver()
-				.get("https://magento.softwaretestingboard.com/");
+		DriverFactory.getDriver().get(TestConstant.URL);
 	}
 
 	@When("user click on signin link")
@@ -24,14 +24,14 @@ public class LoginPageSteps {
 		loginPage.clickOnSignInLink();
 	}
 
-	@And("user enters username {string}")
-	public void user_enters_username(String username) {
-		loginPage.enterUserName(username);
+	@And("user enters username")
+	public void user_enters_username() {
+		loginPage.enterUserName(TestConstant.EMAILID);
 	}
 
-	@And("user enters password {string}")
-	public void user_enters_password(String password) {
-		loginPage.enterPassword(password);
+	@And("user enters password")
+	public void user_enters_password() {
+		loginPage.enterPassword(TestConstant.PASSWORD);
 	}
 
 	@And("user clicks on Login button")
