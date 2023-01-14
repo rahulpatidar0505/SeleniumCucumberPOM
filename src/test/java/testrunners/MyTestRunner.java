@@ -7,7 +7,6 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = {"src/test/resources/feature/LoginAndPlaceOrder.feature"},
-//        tags = "@Login",
         glue = {"stepdefinitions"},
         plugin = {"pretty",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",

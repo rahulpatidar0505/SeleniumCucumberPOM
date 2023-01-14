@@ -24,7 +24,7 @@ public class LoginPage {
 	WebElement lc_signInButton;
 
 	@FindBy(css = "div[data-bind='html: $parent.prepareMessageForHtml(message.text)']")
-	WebElement lc_incorrectCaptcha;
+	WebElement lc_errorMsg;
 
 	public void clickOnSignInLink() {
 		lc_signInLink.click();
@@ -54,7 +54,7 @@ public class LoginPage {
 	}
 
 	public String verifyErrorMsg() {
-		return lc_incorrectCaptcha.getText();
+		return lc_errorMsg.getText();
 	}
 
 //	Faker faker = new Faker();

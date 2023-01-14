@@ -65,4 +65,9 @@ public class LoginPageSteps {
 	public void userEnterInvalidPassword() {
 		loginPage.enterPassword("random");
 	}
+
+	@Given("user is on login page")
+	public void userIsOnLoginPage() {
+		title = loginPage.getLoginPageTitle();
+		Assert.assertTrue(title.contains("Customer Login"));	}
 }

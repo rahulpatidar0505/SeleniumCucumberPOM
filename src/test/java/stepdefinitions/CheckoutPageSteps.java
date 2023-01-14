@@ -14,9 +14,9 @@ import utility.TestUtils;
 public class CheckoutPageSteps {
 
 	CheckoutPage checkoutPage= PageFactory.initElements(DriverFactory.getDriver(), CheckoutPage.class);
-	@Given("^user is on checkout page$")
-	public void user_is_on_checkout_page() {
-		System.out.println("user is on checkout page");
+	@And("^verify user is on checkout page$")
+	public void verify_user_is_on_checkout_page() {
+		Assert.assertTrue(checkoutPage.getCheckoutPageTitle().contains("Checkout Magento Commerce"));
 	}
 
 	@When("^user expand order summary$")
@@ -77,5 +77,10 @@ public class CheckoutPageSteps {
 	@Then("^click on My Account under user profile$")
 	public void click_on_My_Account_under_user_profile() {
 		checkoutPage.goToMyAccount();
+	}
+
+	@Given("user is on checkout page")
+	public void userIsOnCheckoutPage() {
+		Assert.assertTrue(checkoutPage.getCheckoutPageTitle().contains("Checkout Magento Commerce"));
 	}
 }

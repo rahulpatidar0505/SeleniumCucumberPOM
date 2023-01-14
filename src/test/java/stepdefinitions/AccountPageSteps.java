@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import factory.DriverFactory;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -35,12 +36,12 @@ public class AccountPageSteps {
         Assert.assertEquals(addressBook, "Address Book");
     }
 
-    @When("user navigate and hover to Men>Top and click on Jackets")
+    @Then("user navigate and hover to Men>Top and click on Jackets")
     public void user_navigate_and_hover_to_men_top_and_click_on_jackets() {
         accountPage.selectJacket();
     }
 
-    @Then("user select product {string} and size {string} and color {string}")
+    @And("user select product {string} and size {string} and color {string}")
     public void userSelectProductAndSizeAndColor(String productName, String productSize, String productColor) {
         accountPage.selectProductName(productName);
         accountPage.selectProductSize(productSize);

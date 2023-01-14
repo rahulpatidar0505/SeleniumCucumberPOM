@@ -1,4 +1,3 @@
-@Login
 Feature: Login to magento application and place an order
 
   Scenario: Login with incorrect credentials

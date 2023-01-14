@@ -113,6 +113,7 @@ public class AccountPage {
 	}
 
 	public void clickOnAddToCartButton() {
+		TestUtils.waitForElementPresent(lc_addToCartButton, 5);
 		TestUtils.clickOn(driver, lc_addToCartButton, 2);
 	}
 

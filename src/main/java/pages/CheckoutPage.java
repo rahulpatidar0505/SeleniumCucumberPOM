@@ -84,6 +84,9 @@ public class CheckoutPage extends BaseClass {
 	public String getZeppelinProductPrice() {
 		return lc_zeppelinProductPrice.getText();
 	}
+	public String getCheckoutPageTitle(){
+		return driver.getTitle();
+	}
 	public void expandOrderSummary(){
 		TestUtils.waitForElementPresent(lc_orderSummary, 5);
 		clickOn(driver, lc_orderSummary, 2);

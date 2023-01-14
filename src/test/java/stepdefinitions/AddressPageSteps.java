@@ -23,7 +23,7 @@ public class AddressPageSteps {
 
 	AddressPage addressPage = PageFactory.initElements(DriverFactory.getDriver(), AddressPage.class);
 	CheckoutPage checkoutPage = PageFactory.initElements(DriverFactory.getDriver(), CheckoutPage.class);
-	@Given("user navigates to my account page")
+	@Then("user navigates to my account page")
 	public void navigateToMyAccountPage() {
 		checkoutPage.goToMyAccount();
 	}
