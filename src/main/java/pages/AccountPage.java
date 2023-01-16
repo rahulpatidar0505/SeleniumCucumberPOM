@@ -125,5 +125,14 @@ public class AccountPage {
 		TestUtils.waitForElementPresent(lc_checkout, 5);
 		TestUtils.clickOn(driver, lc_checkout, 2);
 	}
+
+	public void selectProductAndCheckout(String productName, String productSize, String productColor){
+		selectProductName(productName);
+		selectProductSize(productSize);
+		selectProductColor(productColor);
+		clickOnAddToCartButton();
+		clickOnCart();
+		proceedToCheckout();
+	}
 }
 

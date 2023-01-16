@@ -30,12 +30,6 @@ public class AccountPageSteps {
         loginPage.loginToApplication(email, password);
     }
 
-    @Given("user is on address page")
-    public void user_is_on_address_page() {
-        String addressBook = addressPage.verifyAddressBookText();
-        Assert.assertEquals(addressBook, "Address Book");
-    }
-
     @Then("user navigate and hover to Men>Top and click on Jackets")
     public void user_navigate_and_hover_to_men_top_and_click_on_jackets() {
         accountPage.selectJacket();

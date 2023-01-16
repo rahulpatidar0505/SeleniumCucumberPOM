@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import factory.DriverFactory;
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -23,12 +24,12 @@ public class AddressPageSteps {
 
 	AddressPage addressPage = PageFactory.initElements(DriverFactory.getDriver(), AddressPage.class);
 	CheckoutPage checkoutPage = PageFactory.initElements(DriverFactory.getDriver(), CheckoutPage.class);
-	@Then("user navigates to my account page")
+	@When("user navigates to my account page")
 	public void navigateToMyAccountPage() {
 		checkoutPage.goToMyAccount();
 	}
 
-	@When("user click on edit address link")
+	@And("user click on edit address link")
 	public void userClickOnEditAddressLink() {
 		addressPage.clickOnEditAddress();
 	}

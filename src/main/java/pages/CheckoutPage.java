@@ -124,4 +124,7 @@ public class CheckoutPage extends BaseClass {
 		clickOn(driver, lc_accountPanelArrow, 2);
 		clickOn(driver, lc_myAccount, 2);
 	}
+	public void navigateToCheckout() {
+		driver.navigate().to("https://magento.softwaretestingboard.com/checkout/#shipping");
+	}
 }

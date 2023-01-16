@@ -1,7 +1,12 @@
 Feature: Account page feature
 
+  Background:
+    Given user has already logged in to application
+    |email|password|
+    |abc0505@gmail.com|Test@123|
+
   Scenario: Select products and add into cart
-    Given user is on address page
+    Given user is on home page
     When user navigate and hover to Men>Top and click on Jackets
     Then user select product "Montana Wind Jacket" and size "M" and color "Green"
     And user click on Add to cart button

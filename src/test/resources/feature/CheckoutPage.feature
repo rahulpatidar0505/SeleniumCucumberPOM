@@ -1,7 +1,13 @@
 Feature: Checkout page feature
 
-  Scenario: Verify order summary and place an order
-    Given user is on checkout page
+  Background:
+    Given user has already logged in to application
+      |email|password|
+      |abc0505@gmail.com|Test@123|
+    And user navigate to checkout page
+
+  Scenario: Checkout products
+    Given user is present on checkout page
     When user expand order summary
     Then verify selected product on the order summary
     And user verify shipping address is selected

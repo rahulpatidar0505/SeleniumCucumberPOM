@@ -9,6 +9,7 @@ import utility.ConfigReader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import utility.TestConstant;
 
 public class ApplicationHooks {
     private DriverFactory driverFactory;
@@ -28,7 +29,10 @@ public class ApplicationHooks {
         driverFactory = new DriverFactory();
         driver = driverFactory.init_driver(browserName);
     }
-
+    @Before(order = 2)
+    public void launchApplication() {
+        DriverFactory.getDriver().get(TestConstant.URL);
+    }
     @After(order = 0)
     public void quitBrowser() {
         driver.quit();

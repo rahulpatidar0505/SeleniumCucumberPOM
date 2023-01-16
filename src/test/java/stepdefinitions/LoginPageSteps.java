@@ -1,30 +1,29 @@
 package stepdefinitions;
 
-import io.cucumber.java.en.And;
-import org.junit.Assert;
-import org.openqa.selenium.support.PageFactory;
-import pages.LoginPage;
 import factory.DriverFactory;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.support.PageFactory;
+import pages.LoginPage;
 import utility.TestConstant;
-
 public class LoginPageSteps {
 
 	private static String title;
 	LoginPage loginPage = PageFactory.initElements(DriverFactory.getDriver(), LoginPage.class);
 	@Given("user is on home page")
 	public void user_is_on_home_page() {
-		DriverFactory.getDriver().get(TestConstant.URL);
+		Assert.assertTrue(loginPage.getHomePageTitle().contains("Home Page"));
 	}
 
-	@When("user click on signin link")
+	@And("user click on signin link")
 	public void user_is_on_login_page() {
 		loginPage.clickOnSignInLink();
 	}
 
-	@And("user enter valid username")
+	@When("user enter valid username")
 	public void user_enter_valid_username() {
 		loginPage.enterUserName(TestConstant.EMAILID);
 	}
@@ -70,4 +69,27 @@ public class LoginPageSteps {
 	public void userIsOnLoginPage() {
 		title = loginPage.getLoginPageTitle();
 		Assert.assertTrue(title.contains("Customer Login"));	}
+
+	@When("user enter invalid email")
+	public void userEnterInvalidEmail() {
+		loginPage.enterUserName("random");
+	}
+
+	@Then("verify the email error message")
+	public void verifyTheEmailErrorMessage() {
+		String errorMsg = loginPage.verifyInvalidEmailErrorMsg();
+		Assert.assertTrue(errorMsg.contains("Please enter a valid email address"));
+	}
+
+	@And("verify title contains {string}")
+	public void verifyTitleContains(String expectedTitle) {
+		String loginTitle = loginPage.getLoginPageTitle();
+		Assert.assertTrue(loginTitle.contains(expectedTitle));
+	}
+
+	@And("verify url contains {string}")
+	public void verifyUrlContains(String expectedLoginUrl) {
+		String loginUrl = loginPage.getLoginPageUrl();
+		Assert.assertTrue(loginUrl.contains(expectedLoginUrl));
+	}
 }

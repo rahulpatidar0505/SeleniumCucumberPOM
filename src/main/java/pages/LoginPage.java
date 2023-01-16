@@ -26,6 +26,9 @@ public class LoginPage {
 	@FindBy(css = "div[data-bind='html: $parent.prepareMessageForHtml(message.text)']")
 	WebElement lc_errorMsg;
 
+	@FindBy(xpath = "//div[@id='email-error']")
+	WebElement lc_emailErrorMsg;
+
 	public void clickOnSignInLink() {
 		lc_signInLink.click();
 	}
@@ -49,13 +52,20 @@ public class LoginPage {
 		lc_signInButton.click();
 	}
 
-	public String getLoginPageTitle() {
+	public String getHomePageTitle() {
 		return driver.getTitle();
 	}
 
+	public String getLoginPageTitle() {
+		return driver.getTitle();
+	}
+	public String getLoginPageUrl() {
+		return driver.getCurrentUrl();
+	}
 	public String verifyErrorMsg() {
 		return lc_errorMsg.getText();
 	}
 
-//	Faker faker = new Faker();
-}
+	public String verifyInvalidEmailErrorMsg() {
+		return lc_emailErrorMsg.getText();
+	}}
