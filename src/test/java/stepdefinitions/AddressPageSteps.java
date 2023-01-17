@@ -9,7 +9,6 @@ import org.junit.Assert;
 import org.openqa.selenium.support.PageFactory;
 import pages.AddressPage;
 import pages.CheckoutPage;
-import utility.ElementUtil;
 import utility.ExcelReader;
 import java.io.IOException;
 import java.util.List;
