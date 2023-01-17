@@ -33,7 +33,7 @@ public class AddressPageSteps {
     public void user_fills_the_form_from_sheetname_and_rownumber(String sheetName, int rowNumber) throws IOException, InvalidFormatException {
         ExcelReader reader = new ExcelReader();
         List<Map<String, String>> testData =
-                reader.getData("ApplicationData/ApplicationData.xlsx", sheetName);
+                reader.getData("src/test/resources/ApplicationData/ApplicationData.xlsx", sheetName);
 
         String firstName = testData.get(rowNumber).get("firstName");
         String lastName = testData.get(rowNumber).get("lastName");
