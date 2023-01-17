@@ -6,7 +6,7 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src/test/resources/feature"},
+        features = {"src/test/resources/feature/LoginPage.feature"},
         glue = {"stepdefinitions"},
         plugin = {"pretty", "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "timeline:test-output-thread/"}
 )
