@@ -7,12 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utility.BaseClass;
 import utility.ElementUtil;
-import utility.TestUtils;
 import java.util.List;
 
 public class MyOrderPage extends BaseClass {
     private WebDriver driver;
-    TestUtils testUtils = new TestUtils();
     ElementUtil eleUtils = new ElementUtil(driver);
     public MyOrderPage(WebDriver driver) {
         this.driver = driver;
@@ -24,7 +22,7 @@ public class MyOrderPage extends BaseClass {
     List<WebElement> orderRowList;
 
     public void goToMyOrders() {
-        testUtils.waitForElementPresent(lc_myOrder);
+        eleUtils.waitForElementPresent(lc_myOrder);
         eleUtils.doClick(lc_myOrder);
     }
 

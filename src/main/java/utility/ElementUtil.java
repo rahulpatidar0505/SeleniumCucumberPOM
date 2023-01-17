@@ -1,6 +1,7 @@
 package utility;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -8,16 +9,15 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
-public class ElementUtil {
+public class ElementUtil extends BaseClass{
 
     private WebDriver driver;
-
-    TestUtils testUtils = new TestUtils();
     public ElementUtil(WebDriver driver) {
         this.driver = driver;
     }
-
 
     public void doSendkeys(WebElement element, String value) {
         element.clear();
@@ -29,7 +29,7 @@ public class ElementUtil {
     }
 
     public void selectByVisibleText(WebElement element, String visibleText) {
-        testUtils.waitForElementPresent(element);
+        waitForElementPresent(element);
         Select sel = new Select(element);
         sel.selectByVisibleText(visibleText);
     }
@@ -103,5 +103,32 @@ public class ElementUtil {
     public WebElement waitForElementVisible(By locator, int timeOut) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public void waitForElementPresent(WebElement element) {
+        for (int i = 0; i < TimeUtil.DEFAULT_TIME_OUT; i++) {
+            try {
+                new WebDriverWait(driver, Duration.ofMillis(TimeUtil.DEFAULT_TIME_OUT))
+                        .until(ExpectedConditions.presenceOfElementLocated((By) element));
+                break;
+            } catch (Exception e) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e1) {
+                    System.out.println("Waiting for element to appear on DOM");
+                }
+            }
+        }
+    }
+
+    public void clickElementByJS(WebElement element, WebDriver driver) {
+        JavascriptExecutor js = ((JavascriptExecutor) driver);
+        js.executeScript("arguments[0].click();", element);
+
+    }
+
+    public void scrollIntoView(WebElement element, WebDriver driver) {
+        JavascriptExecutor js = ((JavascriptExecutor) driver);
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 }

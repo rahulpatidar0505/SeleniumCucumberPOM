@@ -5,11 +5,13 @@ import io.cucumber.java.en.And;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.MyOrderPage;
+import utility.ElementUtil;
 import utility.TestUtils;
 
 public class MyOrderPageSteps {
 
     MyOrderPage myOrderPage = PageFactory.initElements(DriverFactory.getDriver(), MyOrderPage.class);
+    ElementUtil eleUtils = new ElementUtil(DriverFactory.getDriver());
 
     @And("^click on My Orders")
     public void click_on_My_Orders() {

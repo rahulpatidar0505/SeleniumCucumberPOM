@@ -7,14 +7,15 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import pages.AccountPage;
 import pages.CheckoutPage;
+import utility.ElementUtil;
 import utility.TestConstant;
 import utility.TestUtils;
 
 public class CheckoutPageSteps {
 
     CheckoutPage checkoutPage = PageFactory.initElements(DriverFactory.getDriver(), CheckoutPage.class);
+    ElementUtil eleUtils = new ElementUtil(DriverFactory.getDriver());
 
     @And("^verify user is on checkout page$")
     public void verify_user_is_on_checkout_page() {

@@ -3,14 +3,11 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utility.BaseClass;
 import utility.ElementUtil;
-import utility.TestUtils;
 import java.util.List;
 
-public class CheckoutPage extends BaseClass {
+public class CheckoutPage {
     private WebDriver driver;
-    TestUtils testUtils = new TestUtils();
     ElementUtil eleUtils = new ElementUtil(driver);
 
     public CheckoutPage(WebDriver driver) {
@@ -68,12 +65,12 @@ public class CheckoutPage extends BaseClass {
     WebElement lc_zeppelinProductPrice;
 
     public String getMontanaProductName() {
-        testUtils.waitForElementPresent(lc_montana_product_name);
+        eleUtils.waitForElementPresent(lc_montana_product_name);
         return eleUtils.doGetElementText(lc_montana_product_name);
     }
 
     public String getMontanaProductPrice() {
-        testUtils.waitForElementPresent(lc_montana_product_price);
+        eleUtils.waitForElementPresent(lc_montana_product_price);
         return eleUtils.doGetElementText(lc_montana_product_price);
     }
 
@@ -98,29 +95,29 @@ public class CheckoutPage extends BaseClass {
     }
 
     public void expandOrderSummary() {
-        testUtils.waitForElementPresent(lc_orderSummary);
+        eleUtils.waitForElementPresent(lc_orderSummary);
         eleUtils.doClick(lc_orderSummary);
-        testUtils.waitForElementPresent(lc_displayProductSummary);
+        eleUtils.waitForElementPresent(lc_displayProductSummary);
     }
 
     public void verifyShippingAddressIsSelected() {
-        testUtils.waitForElementPresent(lc_selectShippingAddress);
+        eleUtils.waitForElementPresent(lc_selectShippingAddress);
         eleUtils.doIsDisplayed(lc_selectShippingAddress);
     }
 
     public void verifyShippingMethodIsSelected() {
-        testUtils.waitForElementPresent(lc_selectShippingMethod);
+        eleUtils.waitForElementPresent(lc_selectShippingMethod);
         eleUtils.doIsDisplayed(lc_selectShippingMethod);
     }
 
     public void clickOnNext() {
-        testUtils.waitForElementPresent(lc_nextButton);
+        eleUtils.waitForElementPresent(lc_nextButton);
         eleUtils.doClick(lc_nextButton);
     }
 
     public void clickOnPlaceOrder() {
-        testUtils.waitForElementPresent(lc_placeOrderButton);
-        testUtils.clickElementByJS(lc_placeOrderButton, driver);
+        eleUtils.waitForElementPresent(lc_placeOrderButton);
+        eleUtils.clickElementByJS(lc_placeOrderButton, driver);
     }
 
     public String fetchOrderNumber() {
@@ -131,12 +128,12 @@ public class CheckoutPage extends BaseClass {
     }
 
     public String getThanksMessage() {
-        testUtils.waitForElementPresent(lc_thanksMsg);
+        eleUtils.waitForElementPresent(lc_thanksMsg);
         return lc_thanksMsg.getText();
     }
 
     public void goToMyAccount() {
-        testUtils.waitForElementPresent(lc_accountPanelArrow);
+        eleUtils.waitForElementPresent(lc_accountPanelArrow);
         eleUtils.doClick(lc_accountPanelArrow);
         eleUtils.doClick(lc_myAccount);
     }

@@ -14,30 +14,4 @@ public class TestUtils extends BaseClass {
     public static Map<String, String> productDetails = new HashMap<>();
     public static String orderNumber;
 
-    public void waitForElementPresent(WebElement element) {
-        for (int i = 0; i < TimeUtil.DEFAULT_TIME_OUT; i++) {
-            try {
-                new WebDriverWait(driver, Duration.ofMillis(TimeUtil.DEFAULT_TIME_OUT))
-                        .until(ExpectedConditions.presenceOfElementLocated((By) element));
-                break;
-            } catch (Exception e) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e1) {
-                    System.out.println("Waiting for element to appear on DOM");
-                }
-            }
-        }
-    }
-
-    public void clickElementByJS(WebElement element, WebDriver driver) {
-        JavascriptExecutor js = ((JavascriptExecutor) driver);
-        js.executeScript("arguments[0].click();", element);
-
-    }
-
-    public void scrollIntoView(WebElement element, WebDriver driver) {
-        JavascriptExecutor js = ((JavascriptExecutor) driver);
-        js.executeScript("arguments[0].scrollIntoView(true);", element);
-    }
 }

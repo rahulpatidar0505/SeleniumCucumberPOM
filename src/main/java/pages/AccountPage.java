@@ -4,12 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utility.ElementUtil;
-import utility.TestUtils;
 import java.util.List;
 
 public class AccountPage {
     private WebDriver driver;
-    TestUtils testUtils= new TestUtils();
     public AccountPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -62,14 +60,14 @@ public class AccountPage {
 
     public void selectJacket() {
         eleUtils.moveToElement(lc_men, driver);
-        testUtils.scrollIntoView(lc_tops, driver);
-        testUtils.clickElementByJS(lc_jackets, driver);
+        eleUtils.scrollIntoView(lc_tops, driver);
+        eleUtils.clickElementByJS(lc_jackets, driver);
     }
 
     public void selectPant() {
         eleUtils.moveToElement(lc_men, driver);
-        testUtils.scrollIntoView(lc_bottoms, driver);
-        testUtils.clickElementByJS(lc_pants, driver);
+        eleUtils.scrollIntoView(lc_bottoms, driver);
+        eleUtils.clickElementByJS(lc_pants, driver);
     }
 
     public void selectProductName(String productName) {
@@ -90,7 +88,7 @@ public class AccountPage {
     }
 
     public String getProductAddedMsg() {
-        testUtils.waitForElementPresent(lc_productAddedMsg);
+        eleUtils.waitForElementPresent(lc_productAddedMsg);
         return eleUtils.doGetElementText(lc_productAddedMsg);
     }
 
@@ -113,17 +111,17 @@ public class AccountPage {
     }
 
     public void clickOnAddToCartButton() {
-        testUtils.waitForElementPresent(lc_addToCartButton);
+        eleUtils.waitForElementPresent(lc_addToCartButton);
         eleUtils.doClick(lc_addToCartButton);
     }
 
     public void clickOnCart() {
-        testUtils.waitForElementPresent(lc_cartLink);
+        eleUtils.waitForElementPresent(lc_cartLink);
         eleUtils.doClick(lc_cartLink);
     }
 
     public void proceedToCheckout() {
-        testUtils.waitForElementPresent(lc_checkout);
+        eleUtils.waitForElementPresent(lc_checkout);
         eleUtils.doClick(lc_checkout);
     }
 }
