@@ -29,10 +29,12 @@ public class ApplicationHooks {
         driverFactory = new DriverFactory();
         driver = driverFactory.init_driver(browserName);
     }
+
     @Before(order = 2)
     public void launchApplication() {
         DriverFactory.getDriver().get(TestConstant.URL);
     }
+
     @After(order = 0)
     public void quitBrowser() {
         driver.quit();

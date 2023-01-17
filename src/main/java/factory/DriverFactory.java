@@ -6,7 +6,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import utility.TestConstant;
-import utility.TestUtils;
 import java.time.Duration;
 
 public class DriverFactory {

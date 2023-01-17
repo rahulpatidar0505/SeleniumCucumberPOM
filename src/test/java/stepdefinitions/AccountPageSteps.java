@@ -4,11 +4,9 @@ import factory.DriverFactory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import pages.AccountPage;
-import pages.AddressPage;
 import pages.LoginPage;
 import utility.TestConstant;
 import utility.TestUtils;
@@ -16,10 +14,8 @@ import java.util.List;
 import java.util.Map;
 
 public class AccountPageSteps {
-
-    AccountPage accountPage = PageFactory.initElements(DriverFactory.getDriver(), AccountPage.class);
     LoginPage loginPage = PageFactory.initElements(DriverFactory.getDriver(), LoginPage.class);
-    AddressPage addressPage = PageFactory.initElements(DriverFactory.getDriver(), AddressPage.class);
+    AccountPage accountPage = PageFactory.initElements(DriverFactory.getDriver(), AccountPage.class);
 
     @Given("user has already logged in to application")
     public void user_has_already_logged_in_to_application(io.cucumber.datatable.DataTable dataTable) {

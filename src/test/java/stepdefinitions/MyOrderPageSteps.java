@@ -9,16 +9,16 @@ import utility.TestUtils;
 
 public class MyOrderPageSteps {
 
-	MyOrderPage myOrderPage = PageFactory.initElements(DriverFactory.getDriver(), MyOrderPage.class);
+    MyOrderPage myOrderPage = PageFactory.initElements(DriverFactory.getDriver(), MyOrderPage.class);
 
-	@And("^click on My Orders")
-	public void click_on_My_Orders() {
-		myOrderPage.goToMyOrders();
-	}
+    @And("^click on My Orders")
+    public void click_on_My_Orders() {
+        myOrderPage.goToMyOrders();
+    }
 
-	@And("^verify order number is present in order table$")
-	public void verify_order_number_is_present_in_order_table() {
-		String orderNumberFromOrderTable = myOrderPage.verifyOrderFromOrderTable();
-		Assert.assertEquals(TestUtils.orderNumber, orderNumberFromOrderTable);
-	}
+    @And("^verify order number is present in order table$")
+    public void verify_order_number_is_present_in_order_table() {
+        String orderNumberFromOrderTable = myOrderPage.verifyOrderFromOrderTable();
+        Assert.assertEquals(TestUtils.orderNumber, orderNumberFromOrderTable);
+    }
 }
