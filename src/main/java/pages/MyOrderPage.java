@@ -5,11 +5,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utility.BaseClass;
 import utility.ElementUtil;
 import java.util.List;
 
-public class MyOrderPage extends BaseClass {
+public class MyOrderPage {
     private WebDriver driver;
     ElementUtil eleUtils = new ElementUtil(driver);
     public MyOrderPage(WebDriver driver) {
